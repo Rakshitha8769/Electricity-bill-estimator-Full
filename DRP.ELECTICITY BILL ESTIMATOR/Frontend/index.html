@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Estimator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>⚡ Electricity Bill Estimator</h1>
+            <p>Calculate and manage your estimated electricity bills easily.</p>
+        </header>
+
+        <main>
+
+            <!-- Calculator Form -->
+            <section class="card">
+                <h2>Calculate Your Bill</h2>
+
+                <div id="message" class="hidden" role="status" aria-live="polite"></div>
+
+                <form id="bill-form">
+                    <div class="form-group">
+                        <label for="consumer-name">Consumer Name</label>
+                        <input
+                            type="text"
+                            id="consumer-name"
+                            name="consumerName"
+                            placeholder="Enter your name or nickname"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="units">Units Consumed (kWh)</label>
+                        <input
+                            type="number"
+                            id="units"
+                            name="units"
+                            placeholder="Example: 150"
+                            min="0"
+                            max="1000000"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rate">Rate Per Unit (₹)</label>
+                        <input
+                            type="number"
+                            id="rate"
+                            name="rate"
+                            placeholder="Example: 5.50"
+                            min="0"
+                            max="100000"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additional-charges">Additional Charges (₹)</label>
+                        <input
+                            type="number"
+                            id="additional-charges"
+                            name="additionalCharges"
+                            placeholder="Example: 50"
+                            min="0"
+                            max="10000000"
+                            step="0.01"
+                            value="0"
+                            required
+                        >
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn-primary">
+                            Calculate Bill
+                        </button>
+
+                        <button type="reset" class="btn-secondary">
+                            Reset
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Bill Result -->
+            <section class="card hidden" id="bill-result" aria-live="polite">
+                <h2>Estimated Bill Details</h2>
+
+                <div class="result-row">
+                    <span>Consumer Name</span>
+                    <span id="result-name">-</span>
+                </div>
+
+                <div class="result-row">
+                    <span>Units Consumed</span>
+                    <span id="result-units">0 kWh</span>
+                </div>
+
+                <div class="result-row">
+                    <span>Rate Per Unit</span>
+                    <span id="result-rate">₹0.00</span>
+                </div>
+
+                <div class="result-row">
+                    <span>Energy Charges</span>
+                    <span id="result-energy">₹0.00</span>
+                </div>
+
+                <div class="result-row">
+                    <span>Additional Charges</span>
+                    <span id="result-additional">₹0.00</span>
+                </div>
+
+                <div class="result-row total">
+                    <span>Estimated Total</span>
+                    <span id="result-total">₹0.00</span>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="save-btn" class="btn-primary">
+                        Save Estimate
+                    </button>
+                </div>
+            </section>
+
+            <!-- Saved Estimates -->
+            <section class="card">
+                <h2>Saved Estimates</h2>
+
+                <p id="empty-message">
+                    No saved estimates yet. Calculate a bill and save it to see it here.
+                </p>
+
+                <div id="estimates-list"></div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Electricity Bill Estimator | Educational Project</p>
+            <p>This is an estimate, not an official electricity bill.</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
